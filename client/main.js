@@ -15,7 +15,7 @@ const getFortune = () => {
             const data = res.data;
             alert(data);
     });
-}
+};
 
 complimentBtn.addEventListener('click', getCompliment);
 fortuneBtn.addEventListener('click', getFortune);
