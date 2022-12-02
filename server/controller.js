@@ -5,7 +5,7 @@ module.exports = {
 
         // choose random compliment
         let randomIndex = Math.floor(Math.random() * compliments.length);
-        
+
         let randomCompliment = compliments[randomIndex];
 
         res.status(200).send(randomCompliment);
@@ -20,6 +20,10 @@ module.exports = {
         let randomFortune = fortunes[randomIndex];
 
         res.status(200).send(randomFortune);
+    },
+
+    postName: (req, res) => {
+        console.log(res);
     }
 
 }
