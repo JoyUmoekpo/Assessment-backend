@@ -1,3 +1,5 @@
+const classmateCompliments = require('./db.json');
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -22,5 +24,7 @@ module.exports = {
         res.status(200).send(randomFortune);
     },
 
-
+    getClassCompliments: (req, res) => {
+        res.status(200).send(movies);
+    }
 }
