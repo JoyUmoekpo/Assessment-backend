@@ -1,0 +1,17 @@
+[
+    {
+        "id": 1,
+        "name": "Joy",
+        "encouragement": "You are amazing! And don't you forget it!"
+    },
+    {
+        "id": 2,
+        "name": "Patty",
+        "encouragement": "Follow your passions!"
+    },
+    {
+        "id": 3,
+        "name": "Ron",
+        "encouragement": "I love the cut of your gib!"
+    }
+]
