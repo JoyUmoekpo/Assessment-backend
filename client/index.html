@@ -6,25 +6,31 @@
   <body class="container">
     <button id="complimentButton">Get a compliment</button>
     <button id="fortuneButton">Get a fortune</button>
+    <button id="clear">Clear compliments</button>
 
     <div id="threeFeatures">
-      <h1>Three More Features</h1>
+      <p>
+        Press 'Clear compliments' button above to test other features when done
+        with a feature
+      </p>
+      
+      <h1>Compliments Here:</h1>
 
+      <section id="complimentContainer"></section>
       <section id="first">
         <h2>
-          Feature 1: Get Method (Class compliments show up when you press submit)
+          Feature 1: Get Method (Class compliments show up when you press
+          submit along with other compliments)
         </h2>
         <button id="classComplimentButton">Get compliments</button>
-        <section id="classmate-container"></section>
-        <button id="clear">Clear compliments</button>
       </section>
 
       <br />
 
       <section id="second">
         <h2>
-          Feature 2: Post Method (Your name and compliment will be posted to
-          the DOM)
+          Feature 2: Post Method (Your name and compliment will be posted to the
+          DOM)
         </h2>
 
         <form>
@@ -37,19 +43,22 @@
 
           <input
             type="text"
-            name="lastName"
-            placeholder="Enter your last name"
-            id="lastName"
+            name="newCompliment"
+            placeholder="Enter your compliment"
+            id="newCompliment"
           />
 
-          <button id="nameButton">Submit</button>
+          <button id="newComplimentButton">Submit compliment</button>
         </form>
-
-        <section id="secondPost"></section>
-
       </section>
 
-      <section id="third"></section>
+      <br />
+
+      <section id="third">
+        <h2>Feature 3: Put Method (Choose the compliment you want to change and it will be updated)</h2>
+
+        
+      </section>
 
       <section id="fourth"></section>
     </div>

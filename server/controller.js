@@ -1,4 +1,5 @@
 const classmateCompliments = require('./db.json');
+let globalId = 4;
 
 module.exports = {
 
@@ -26,5 +27,20 @@ module.exports = {
 
     getClassCompliments: (req, res) => {
         res.status(200).send(classmateCompliments);
+    },
+
+    postNewCompliment: (req, res) => {
+        let { name, encouragement } = req.body;
+
+        let newCompliment = {
+            id: globalId,
+            name,
+            encouragement,
+        }
+        
+        classmateCompliments.push(newCompliment);
+
+        res.status(200).send(classmateCompliments);
+        globalId++;
     }
 }

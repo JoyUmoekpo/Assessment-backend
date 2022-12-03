@@ -1,8 +1,12 @@
 const complimentBtn = document.getElementById("complimentButton");
 const fortuneBtn = document.getElementById("fortuneButton");
-const classComplimentsBtn = document.getElementById("classComplimentButton");
 
-const complimentContainer = document.getElementById("classmate-container");
+const classComplimentsBtn = document.getElementById("classComplimentButton");
+const complimentContainer = document.getElementById("complimentContainer");
+
+const newComplimentBtn = document.createElement("newComplimentButton");
+const newComplimentContainer = document.getElementById("newComplimentContainer");
+const form = document.querySelector('form')
 
 const clearBtn = document.getElementById("clear");
 
@@ -26,11 +30,10 @@ const getClassCompliments = () => {
     axios.get("http://localhost:4000/api/compliments/classmates")
         .then(res => {
             const data = res.data;
-            console.log(data);
             complimentDisplay(data)
         })
         .catch(err => console.log(err))
-}
+};
 
 const complimentDisplay = (results) => {
     let cards = ``;
@@ -44,13 +47,42 @@ const complimentDisplay = (results) => {
         `;
     }
     complimentContainer.innerHTML = cards;
-}
+};
 
 const clearDisplay = () => {
     complimentContainer.innerHTML = ``;
+};
+
+const submitHandler = (event) => {
+    event.preventDefault() 
+
+    let name = document.querySelector('#firstName')
+    let encouragement = document.querySelector('#newCompliment')
+
+    let newCompliment = {
+        name: name.value,
+        encouragement: encouragement.value,
+    }
+
+    postNewCompliment(newCompliment)
+
+    name.value = ''
+    encouragement.value = ''
 }
+
+const postNewCompliment = (body) => {
+    axios.post("http://localhost:4000/api/compliments/classmates", body)
+        .then(res => {
+            const data = res.data;
+            complimentDisplay(data)
+            console.log(data);
+        })
+        .catch(err => console.log(err))
+};
 
 complimentBtn.addEventListener('click', getCompliment);
 fortuneBtn.addEventListener('click', getFortune);
 classComplimentsBtn.addEventListener('click', getClassCompliments);
 clearBtn.addEventListener('click', clearDisplay);
+form.addEventListener('submit', submitHandler)
+newComplimentBtn.addEventListener('click', postNewCompliment);

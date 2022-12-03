@@ -7,11 +7,12 @@ app.use(cors());
 
 app.use(express.json());
 
-const { getCompliment, getFortune, getClassCompliments } = require('./controller')
+const { getCompliment, getFortune, getClassCompliments, postNewCompliment } = require('./controller')
 
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
-app.get("/api/compliments/classmates", getClassCompliments);
 
+app.get("/api/compliments/classmates", getClassCompliments);
+app.post("/api/compliments/classmates/", postNewCompliment);
 
 app.listen(4000, () => console.log("Server running on 4000"));
