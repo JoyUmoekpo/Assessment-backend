@@ -49,7 +49,7 @@ const complimentDisplay = (results) => {
                 <h3>Update likes with the plus and minus below</h3>
                 <button onclick="updateCompliment('${results[i].likes}')" id="plus" type="plus">+</button>
                 <button onclick="updateCompliment('${results[i].likes}')" id="minus" type="minus">-</button>
-                <button onclick="deleteCompliment('${results[i].name}')">Delete Compliment</button>
+                <button onclick="deleteCompliment('${results[i].id}')">Delete Compliment</button>
                 <p>------------------------------------------------------------------------</p>
             </div>
         `;
