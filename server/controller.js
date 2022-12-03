@@ -22,8 +22,5 @@ module.exports = {
         res.status(200).send(randomFortune);
     },
 
-    postName: (req, res) => {
-        console.log(res);
-    }
 
 }
