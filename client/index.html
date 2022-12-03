@@ -8,14 +8,25 @@
     <button id="fortuneButton">Get a fortune</button>
 
     <div id="threeFeatures">
-
       <h1>Three More Features</h1>
 
-      <main id="main">Feature One: Post Method (Enter your name below and it will show up below)</main>
+      <section id="first">
+        <h2>
+          Feature One: Get Method (Class compliments will show up when you press
+          the button)
+        </h2>
+        <button id="classComplimentButton">Submit</button>
+        <section id="classmate-container"></section>
+      </section>
 
       <br />
 
-      <section id="first">
+      <section id="second">
+        <h2>
+          Feature Two: Post Method (Your name and compliment will be posted to
+          the DOM)
+        </h2>
+
         <form>
           <input
             type="text"
@@ -23,24 +34,24 @@
             placeholder="Enter your first name"
             id="firstName"
           />
+
           <input
             type="text"
             name="lastName"
             placeholder="Enter your last name"
             id="lastName"
           />
+
           <button id="nameButton">Submit</button>
         </form>
 
-        <section id="firstPost"></section>
-        
-        <section id="classmate-container"></section>
-        
+        <section id="secondPost"></section>
+
       </section>
 
-      <section id="section"></section>
-
       <section id="third"></section>
+
+      <section id="fourth"></section>
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

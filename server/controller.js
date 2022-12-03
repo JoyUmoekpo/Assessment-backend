@@ -25,6 +25,6 @@ module.exports = {
     },
 
     getClassCompliments: (req, res) => {
-        res.status(200).send(movies);
+        res.status(200).send(classmateCompliments);
     }
 }
