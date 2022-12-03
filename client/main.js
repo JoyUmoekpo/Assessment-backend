@@ -10,6 +10,9 @@ const form = document.querySelector('form')
 
 const clearBtn = document.getElementById("clear");
 
+const plusBtn = document.getElementById("plus");
+const minusBtn = document.getElementById("minus");
+
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
         .then(res => {
@@ -42,6 +45,7 @@ const complimentDisplay = (results) => {
             <div class = "card">
                 <p class = "name">Name: ${results[i].name}</p>
                 <p class = "encouragement">Encouragement: ${results[i].encouragement}</p>
+                <p class = "likes">Likes: ${results[i].likes}</p>
                 <p>------------------------------------------------------------------------</p>
             </div>
         `;
@@ -54,7 +58,7 @@ const clearDisplay = () => {
 };
 
 const submitHandler = (event) => {
-    event.preventDefault() 
+    event.preventDefault()
 
     let name = document.querySelector('#firstName')
     let encouragement = document.querySelector('#newCompliment')
@@ -62,12 +66,14 @@ const submitHandler = (event) => {
     let newCompliment = {
         name: name.value,
         encouragement: encouragement.value,
+        likes: likes.value
     }
 
     postNewCompliment(newCompliment)
 
     name.value = ''
     encouragement.value = ''
+    likes.value = ''
 }
 
 const postNewCompliment = (body) => {
@@ -75,7 +81,18 @@ const postNewCompliment = (body) => {
         .then(res => {
             const data = res.data;
             complimentDisplay(data)
-            console.log(data);
+        })
+        .catch(err => console.log(err))
+};
+
+const updateCompliment = (id, type) => {
+    axios.put("http://localhost:4000/api/compliments/classmates/"
+            `${id}`, {
+                type
+            })
+        .then(res => {
+            const data = res.data;
+            complimentDisplay(data)
         })
         .catch(err => console.log(err))
 };
@@ -86,3 +103,5 @@ classComplimentsBtn.addEventListener('click', getClassCompliments);
 clearBtn.addEventListener('click', clearDisplay);
 form.addEventListener('submit', submitHandler)
 newComplimentBtn.addEventListener('click', postNewCompliment);
+plusBtn.addEventListener('click', updateCompliment);
+minusBtn.addEventListener('click', updateCompliment);

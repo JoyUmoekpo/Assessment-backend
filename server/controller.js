@@ -30,17 +30,50 @@ module.exports = {
     },
 
     postNewCompliment: (req, res) => {
-        let { name, encouragement } = req.body;
+        let {
+            name,
+            encouragement,
+            likes
+        } = req.body;
 
         let newCompliment = {
             id: globalId,
             name,
             encouragement,
+            likes
         }
-        
+
         classmateCompliments.push(newCompliment);
 
         res.status(200).send(classmateCompliments);
         globalId++;
-    }
+    },
+
+    updateCompliment: (req, res) => {
+        let {
+            complimentId
+        } = req.params;
+
+        let {
+            type
+        } = req.body;
+
+        let complimentIndex = classmateCompliments.findIndex(compliment => compliment.id === +complimentId);
+
+        let compliment = classmateCompliments[complimentId];
+
+        if (compliment.likes >= 10 && type === 'plus') {
+            res.status(400).send('Cannot go above 5');
+        } else if (compliment.likes === 0 && type === 'minus') {
+            res.status(400).send('Cannot go below 0');
+        } else if (type === 'plus'){
+            compliment.likes++;
+            res.status(200).send(classmateCompliments);
+        } else if (type === 'minus'){
+            compliment.likes--;
+            res.status(200).send(classmateCompliments);
+        } else {
+            res.status(400);
+        }        
+    },
 }
