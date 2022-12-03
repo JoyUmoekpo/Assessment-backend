@@ -46,6 +46,10 @@ const complimentDisplay = (results) => {
                 <p class = "name">Name: ${results[i].name}</p>
                 <p class = "encouragement">Encouragement: ${results[i].encouragement}</p>
                 <p class = "likes">Likes: ${results[i].likes}</p>
+                <h3>Update likes with the plus and minus below</h3>
+                <button onclick="updateCompliment('${results[i].likes}')" id="plus" type="plus">+</button>
+                <button onclick="updateCompliment('${results[i].likes}')" id="minus" type="minus">-</button>
+                <button onclick="deleteCompliment('${results[i].name}')">Delete Compliment</button>
                 <p>------------------------------------------------------------------------</p>
             </div>
         `;
@@ -95,6 +99,15 @@ const updateCompliment = (id, type) => {
             complimentDisplay(data)
         })
         .catch(err => console.log(err))
+};
+
+const deleteCompliment = (id) => {
+    axios.delete("http://localhost:4000/api/compliments/classmates/"
+    `${id}`).then(res => {
+        const data = res.data;
+        complimentDisplay(data)
+    })
+    .catch(err => console.log(err))
 };
 
 complimentBtn.addEventListener('click', getCompliment);

@@ -76,4 +76,18 @@ module.exports = {
             res.status(400);
         }        
     },
+
+    deleteCompliment: (req, res) => {
+        let {
+            complimentId: id
+        } = req.params;
+        
+        let complimentIndex = classmateCompliments.findIndex(compliment => compliment.id === +id);
+
+        console.log('Compliment Id: ', id);
+        console.log('Compliment Index: ', complimentIndex);
+
+        classmateCompliments.splice(complimentIndex, 1);
+        res.status(200).send(classmateCompliments);
+    }
 }
