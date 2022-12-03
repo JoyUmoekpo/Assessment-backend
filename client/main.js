@@ -20,13 +20,10 @@ const getFortune = () => {
         });
 };
 
-let complimentArray = [];
-
 const getClassCompliments = () => {
     axios.get("http://localhost:4000/api/compliments/classmates")
         .then(res => {
             const data = res.data;
-            complimentArray = data.results
             complimentDisplay(data)
         })
         .catch(err => console.log(err))
@@ -37,9 +34,10 @@ const complimentDisplay = (results) => {
     for (let i = 0; i < results.length; i++) {
         cards += `
             <div class = "card">
-                <p class = "id">Id: ${results[i].id}</p>
+                <br/>
                 <p class = "name">Name: ${results[i].name}</p>
                 <p class = "encouragement">Encouragement: ${results[i].encouragement}</p>
+                <br/>
             </div>
         `;
     }
